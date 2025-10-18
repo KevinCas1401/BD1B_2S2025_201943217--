@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "e7c9b087-0b0f-4855-9a07-f5a9870e3fe2",
+		"name": "FASE 2 PROYECTO COLECCIONES 201943217",
+		"description": "Coleccion de las siguientes tablas\n\n- **CENTROS**\n    \n- **ESCUELAS**\n    \n- **DEPARTAMENTOS**\n    \n\nIncluye descripciones por endpoint y prueba básica de status.  \n**Variable:** `{{baseUrl}}` = `http://localhost:3000`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45408044",
+		"_collection_link": "https://kevin-555099.postman.co/workspace/e27610d4-e8e7-4cf0-8212-83900c54a4fa/collection/45408044-e7c9b087-0b0f-4855-9a07-f5a9870e3fe2?action=share&source=collection_link&creator=45408044"
+	},
+	"item": [
+		{
+			"name": "CRUD Básico — Centros, Escuelas y Departamentos",
+			"item": [
+				{
+					"name": "POST /centros (Insertar Centro)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Centro Zona 5\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/centros",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"centros"
+							]
+						},
+						"description": "**Propósito:** insertar un nuevo **centro**.  \n**Body:**  \n```json\n{ \"nombre\": \"Centro Zona 5\" }\n```\n**Notas:** El **ID** se autogenera (secuencia + trigger).  \n**Respuestas:** `201/200` (creado), `400` si falta `nombre`."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /centros/:id (Obtener Centro por ID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/centros/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"centros",
+								"1"
+							]
+						},
+						"description": "**Propósito:** obtener un **centro** por su **ID**.  \n**Ruta:** `/centros/{id}`  \n**Respuestas:** `200` (objeto centro), `404` si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /centros/:id (Actualizar Centro)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Centro Zona 5 - Actualizado\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/centros/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"centros",
+								"1"
+							]
+						},
+						"description": "**Propósito:** actualizar el **nombre** de un centro existente.  \n**Ruta:** `/centros/{id}`  \n**Body:**  \n```json\n{ \"nombre\": \"Centro Zona 5 - Actualizado\" }\n```\n**Respuestas:** `200` si actualiza, `404` si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /escuelas (Insertar Escuela)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Escuela Municipal Central\",\n  \"direccion\": \"6a av 4-55 zona 1\",\n  \"acuerdo\": \"Acuerdo 2025-01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/escuelas",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escuelas"
+							]
+						},
+						"description": "**Propósito:** insertar una **escuela**.  \n**Body:**  \n```json\n{\n  \"nombre\": \"Escuela Municipal Central\",\n  \"direccion\": \"6a av 4-55 zona 1\",\n  \"acuerdo\": \"Acuerdo 2025-01\"\n}\n```\n**Respuestas:** `201/200` (creado), `400` si faltan campos requeridos."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /escuelas/:id (Obtener Escuela por ID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/escuelas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escuelas",
+								"1"
+							]
+						},
+						"description": "**Propósito:** obtener una **escuela** por **ID**.  \n**Ruta:** `/escuelas/{id}`  \n**Respuestas:** `200` (objeto escuela), `404` si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /escuelas/:id (Actualizar Escuela)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Escuela Municipal Central\",\n  \"direccion\": \"6a av 4-55 zona 1, Ciudad\",\n  \"acuerdo\": \"Acuerdo 2025-01\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/escuelas/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"escuelas",
+								"1"
+							]
+						},
+						"description": "**Propósito:** actualizar datos de una **escuela**.  \n**Ruta:** `/escuelas/{id}`  \n**Body:**  \n```json\n{\n  \"nombre\": \"Escuela Municipal Central\",\n  \"direccion\": \"6a av 4-55 zona 1, Ciudad\",\n  \"acuerdo\": \"Acuerdo 2025-01\"\n}\n```\n**Respuestas:** `200` si actualiza, `404` si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "POST /departamentos (Insertar Departamento)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Guatemala\",\n  \"codigo\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/departamentos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"departamentos"
+							]
+						},
+						"description": "**Propósito:** insertar un **departamento**.  \n**Body:**  \n```json\n{ \"nombre\": \"Guatemala\", \"codigo\": 1 }\n```\n**Respuestas:** `201/200` (creado), `400` si faltan campos."
+					},
+					"response": []
+				},
+				{
+					"name": "GET /departamentos/:id (Obtener Departamento por ID)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/departamentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"departamentos",
+								"1"
+							]
+						},
+						"description": "**Propósito:** obtener un **departamento** por **ID**.  \n**Ruta:** `/departamentos/{id}`  \n**Respuestas:** `200` (objeto dpto), `404` si no existe."
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /departamentos/:id (Actualizar Departamento)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Status is 2xx', function(){",
+									"  pm.expect(pm.response.code).to.be.within(200,299);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Guatemala\",\n  \"codigo\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/departamentos/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"departamentos",
+								"1"
+							]
+						},
+						"description": "**Propósito:** actualizar un **departamento**.  \n**Ruta:** `/departamentos/{id}`  \n**Body:**  \n```json\n{ \"nombre\": \"Guatemala\", \"codigo\": 1 }\n```\n**Respuestas:** `200` si actualiza, `404` si no existe."
+					},
+					"response": []
+				}
+			],
+			"description": "Insertar, obtener y actualizar."
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
